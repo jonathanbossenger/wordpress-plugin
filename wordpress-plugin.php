@@ -7,6 +7,8 @@
  * Author URI: http://jondoe.com
  * Plugin URI: https://wp-plugin.com/
  *
+ * https://developer.wordpress.org/plugins/plugin-basics/header-requirements/
+ *
  */
 
 /**
@@ -34,11 +36,11 @@ function hello_wordpress_content( $content ) {
  */
 add_action( 'admin_notices', 'hello_wordpress_joke' );
 function hello_wordpress_joke() {
-	$response = wp_remote_get( 'https://v2.jokeapi.dev/joke/Pun?blacklistFlags=nsfw,religious,political,racist,sexist,explicit&type=single' );
-	$body     = wp_remote_retrieve_body( $response );
+	$response      = wp_remote_get( 'https://v2.jokeapi.dev/joke/Pun?blacklistFlags=nsfw,religious,political,racist,sexist,explicit&type=single' );
+	$body          = wp_remote_retrieve_body( $response );
 	$content_array = json_decode( $body, true );
 
 	echo '<div class="notice notice-success is-dismissible">';
-	echo '<p>'.$content_array['joke'].'</p>';
+	echo '<p>' . $content_array['joke'] . '</p>';
 	echo '</div>';
 }
