@@ -8,3 +8,10 @@
  * Plugin URI: https://wp-plugin.com/
  *
  */
+
+add_action( 'admin_notices', 'hello_wordpress' );
+function hello_wordpress() {
+	echo '<div class="notice notice-success is-dismissible">';
+	echo '<p>Hello WordPress!</p>';
+	echo '</div>';
+}
