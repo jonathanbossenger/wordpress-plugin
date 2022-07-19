@@ -9,9 +9,16 @@
  *
  */
 
-add_action( 'admin_notices', 'hello_wordpress' );
-function hello_wordpress() {
+add_action( 'admin_notices', 'hello_wordpress_dashboard' );
+function hello_wordpress_dashboard() {
 	echo '<div class="notice notice-success is-dismissible">';
 	echo '<p>Hello WordPress!</p>';
 	echo '</div>';
+}
+
+add_filter( 'the_content', 'hello_wordpress_content' );
+function hello_wordpress_content( $content ) {
+	$content .= '<p>Hello WordPress!</p>';
+
+	return $content;
 }
